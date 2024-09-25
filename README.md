@@ -280,3 +280,96 @@ const person: PersonWithCar = {
 ## Promise with typeScript
 
 [promise](https://youtu.be/7s6aMzXyt3g?si=Ftjdo4zLZJwbrKdp)<https://youtu.be/7s6aMzXyt3g?si=Ftjdo4zLZJwbrKdp>
+
+```ts
+const myFun = async () => {
+  return 'hello world';
+};
+const myFun2 = () => {
+  return new Promise<string>((resolve, reject) => {
+    resolve('hello world');
+  });
+};
+// with await will return string ,
+// without await will return promise
+const x = myFun();
+const y = myFun2();
+```
+
+### typescript with react
+
+```ts
+// option 1
+const MyComponent = ({ name, age }: { name: string; age: number }) => {
+  return (
+    <div>
+      <h1>
+        hello {name} your age is {age}
+      </h1>
+    </div>
+  );
+};
+
+export default MyComponent;
+
+// option 2
+
+interface MyComponentProps {
+  name: string;
+  age: number;
+}
+
+// with destructing props
+const MyComponent = ({ name, age }: MyComponentProps) => {
+  return (
+    <div>
+      <h1>
+        hello {name} your age is {age}
+      </h1>
+    </div>
+  );
+};
+
+export default MyComponent;
+
+// option 3
+
+import { useState } from 'react';
+
+interface MyComponentProps {
+  name: string;
+  age?: number;
+}
+interface Person {
+  name: string;
+  age: number;
+}
+
+// with destructing props
+const MyComponent = ({ name, age = 18 }: MyComponentProps) => {
+  const [count, setCount] = useState(0);
+  // const [person, setPerson] = useState<{ name: string; age: number }>({});
+  const [person, setPerson] = useState<{ [key: string]: any }>({});
+  return (
+    <div>
+      <h1>
+        hello {name} your age is {age}
+      </h1>
+      <h3>your name is {person.name}</h3>
+      <h3> your count is {count}</h3>
+      <button
+        className='btn mt-5 btn-primary'
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        add count
+      </button>
+    </div>
+  );
+};
+
+export default MyComponent;
+```
+
+### typescript with express
