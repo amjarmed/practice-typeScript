@@ -1,14 +1,14 @@
-type User={
-  name:string,
-  age?:number | string 
-} ;
+
+const sum = <T>(n1:T,n2:T)=>{
+  
+}
+
+sum<string>("hello","2")
+
+sum<number>(1,2);
 
 
-let a : User;
+/* 
 
-a = {name:"string", age:33};
-
-let nameAm = JSON.parse("550")
-
-console.log(typeof nameAm);
-
+ how developers organise their interfaces, types,enum, generics,uilities, and classes in TypeScript
+*/
