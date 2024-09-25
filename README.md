@@ -276,3 +276,7 @@ const person: PersonWithCar = {
   email: 'john.doe@example.com',
 };
 ```
+
+## Promise with typeScript
+
+[promise](https://youtu.be/7s6aMzXyt3g?si=Ftjdo4zLZJwbrKdp)<https://youtu.be/7s6aMzXyt3g?si=Ftjdo4zLZJwbrKdp>

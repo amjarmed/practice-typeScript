@@ -1,23 +1,11 @@
-
-type Person = {
-  name: string;
-  age: number;
-  email: string;
+const myFun = async () => {
+  return "hello world";
 }
-type Car ={
-  carName: string;
-  carModel: string;
-  carYear?: number;
+const myFun2 =  () => {
+  return new Promise<string>((resolve, reject) => {
+    resolve("hello world");
+  })
 }
-type PersonWithoutEmail= Omit<Person, "email">;
 
-type PersonWithCar = Person & Car;
-const person: PersonWithCar = {
-  name: "John",
-  age: 30,
-  carName: "Ford",
-  carModel: "Mustang",
-  carYear: 2021,
-  email: "john.doe@example.com",
-
-};
+const x = myFun();
+const y = myFun2();
