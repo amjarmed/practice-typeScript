@@ -1,4 +1,4 @@
-interface Person {
+/* interface Person {
   name: string;
   age: number;
 }
@@ -16,3 +16,4 @@ const newEmployee: Employee = {
 };
 
 console.log(newEmployee);
+ */

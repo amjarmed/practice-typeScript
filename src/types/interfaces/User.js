@@ -1,3 +1,4 @@
+"use strict";
 /* interface User {
   id: number;
   name: string;
@@ -17,4 +18,4 @@ const newUser: User = {
 };
 
 createUser(newUser);
- */
+ */ 

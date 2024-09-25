@@ -1,4 +1,5 @@
-/* 
+"use strict";
+/*
 interface FormData {
   username: string;
   email: string;
@@ -19,4 +20,4 @@ const userInput: FormData = {
 };
 
 console.log(validateForm(userInput)); // Output: true
- */
+ */ 

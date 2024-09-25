@@ -1,3 +1,4 @@
+"use strict";
 /* interface Post {
   id: number;
   title: string;
@@ -14,4 +15,4 @@ async function fetchPosts(): Promise<Post[]> {
 fetchPosts().then((posts) => {
   console.log(posts[0].title); // Accesses the title of the first post.
 });
- */
+ */ 

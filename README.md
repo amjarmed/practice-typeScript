@@ -157,3 +157,122 @@ sum<string>('hello', '2');
 
 sum<number>(1, 2);
 ```
+
+### general object types
+
+```ts
+// flixable obj type
+
+// first method
+const obj: { [key: string]: any } = {
+  name: 'John',
+  age: 30,
+};
+
+obj.bithDate = '1995-01-01';
+
+console.log(obj);
+
+// second method
+
+interface Person {
+  [key: string]: any;
+}
+const obj: Person = {
+  name: 'John',
+  age: 30,
+};
+
+obj.bithDate = '1995-01-01';
+
+console.log(obj);
+```
+
+### utilities
+
+In TypeScript, utilities refer to utility types, which are built-in types that help transform or manipulate other types in a concise and reusable way. They allow developers to perform common tasks like making types optional, readonly, or picking and omitting properties from types. These utilities are useful when working with complex type structures and help make the code more maintainable.
+
+```ts
+interface User {
+  name: string;
+  age: number;
+  email: string;
+  isActive: boolean;
+}
+//Omit<T, K> : Creates a new type by omitting specific properties from an existing type.
+
+interface UserWithoutEmail extends Omit<User, 'email' | 'isActive'> {}
+
+// Pick<T, K> : Creates a new type by selecting specific properties from an existing type.
+interface UserWithNameOnly extends Pick<User, 'name'> {}
+
+const user: UserWithoutEmail = {
+  name: 'string',
+  age: 55.5,
+  email: 'string',
+  isActive: true,
+};
+
+// Partial<T> : Makes all properties in a type optional.
+
+interface UserWithPartialName extends Partial<User> {}
+const userPartial: UserWithPartialName = {
+  name: 'string',
+};
+
+// Required<T> :Makes all properties in a type required.
+
+interface CarWithRequiredYear extends Required<Car> {}
+const secondCar: CarWithRequiredYear = {
+  name: 'Bmw',
+  model: '3CX',
+};
+
+// Readonly<T> : Makes all properties in a type read-only, meaning they cannot be reassigned after creation.
+interface User {
+  name: string;
+  age: number;
+}
+
+const user: Readonly<User> = { name: 'Charlie', age: 30 };
+user.name = 'Dave'; // Error: Cannot assign to 'name' because it is a read-only property
+
+/* 
+ OTHERS :
+Utility types in TypeScript simplify working with complex type structures, making it easier to manipulate types for specific use cases. They reduce boilerplate code and help make the codebase more flexible and maintainable.
+
+ - NonNullable<T>
+ - Extract<T, U>
+ - Exclude<T, U>
+ - ReturnType<T>
+ - Record<K, T>
+
+
+*/
+```
+
+#### types with uitilies
+
+```ts
+type Person = {
+  name: string;
+  age: number;
+  email: string;
+};
+type Car = {
+  carName: string;
+  carModel: string;
+  carYear?: number;
+};
+type PersonWithoutEmail = Omit<Person, 'email'>;
+
+type PersonWithCar = Person & Car;
+const person: PersonWithCar = {
+  name: 'John',
+  age: 30,
+  carName: 'Ford',
+  carModel: 'Mustang',
+  carYear: 2021,
+  email: 'john.doe@example.com',
+};
+```

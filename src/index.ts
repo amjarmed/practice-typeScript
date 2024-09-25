@@ -1,14 +1,23 @@
 
-const sum = <T>(n1:T,n2:T)=>{
-  
+type Person = {
+  name: string;
+  age: number;
+  email: string;
 }
+type Car ={
+  carName: string;
+  carModel: string;
+  carYear?: number;
+}
+type PersonWithoutEmail= Omit<Person, "email">;
 
-sum<string>("hello","2")
+type PersonWithCar = Person & Car;
+const person: PersonWithCar = {
+  name: "John",
+  age: 30,
+  carName: "Ford",
+  carModel: "Mustang",
+  carYear: 2021,
+  email: "john.doe@example.com",
 
-sum<number>(1,2);
-
-
-/* 
-
- how developers organise their interfaces, types,enum, generics,uilities, and classes in TypeScript
-*/
+};

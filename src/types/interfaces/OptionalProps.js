@@ -1,3 +1,4 @@
+"use strict";
 /* interface Car {
   make: string;
   model: string;
@@ -16,4 +17,4 @@ const anotherCar: Car = {
 };
 
 console.log(myCar, anotherCar);
- */
+ */ 
