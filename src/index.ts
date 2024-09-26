@@ -1,11 +1,9 @@
-const myFun = async () => {
-  return "hello world";
-}
-const myFun2 =  () => {
-  return new Promise<string>((resolve, reject) => {
-    resolve("hello world");
-  })
+type PersonRecord= Record<string, string | number>;
+
+let personInfo: PersonRecord = {
+  name: 55,
+  age:30,
+  city: 'New York',
 }
 
-const x = myFun();
-const y = myFun2();
+console.log(personInfo)
