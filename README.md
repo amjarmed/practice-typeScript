@@ -148,6 +148,8 @@ class Car implements ICar {
 
 - export enum / class ...
 
+---
+
 ## generics
 
 Generics in TypeScript allow you to create reusable components that can work with a variety of data types while maintaining type safety. They provide a way to write functions, classes, or interfaces that can work with different types without losing the specific types’ information.
@@ -275,6 +277,8 @@ console.log(stringStack.pop()); // Output: "b"
 - They enable reusability and type safety by allowing developers to write flexible, type-agnostic functions, classes, and interfaces.
 - You can add constraints to generics to restrict them to specific types with certain properties.
 - Generics are especially useful for working with complex data structures or APIs where type flexibility is needed.
+
+---
 
 ### general object types
 
