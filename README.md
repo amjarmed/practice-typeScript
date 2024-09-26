@@ -368,8 +368,20 @@ const MyComponent = ({ name, age = 18 }: MyComponentProps) => {
     </div>
   );
 };
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 export default MyComponent;
 ```
 
 ### typescript with express
+
+```ts
+import express, { Request, Response } from 'express';
+
+const app = express();
+app.get('/', (req: Request, res: Response) => {
+  res.send(` <h1> hello express</h1>`);
+});
+app.listen(3000, () => {
+  console.log('Example app listening on port 3000!');
+});
+```
