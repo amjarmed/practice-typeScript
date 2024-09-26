@@ -150,13 +150,131 @@ class Car implements ICar {
 
 ## generics
 
+Generics in TypeScript allow you to create reusable components that can work with a variety of data types while maintaining type safety. They provide a way to write functions, classes, or interfaces that can work with different types without losing the specific types’ information.
+
+Why Use Generics?
+Generics are useful when:
+
+You want to create functions or data structures that work with multiple types without sacrificing type safety.
+You don't know the exact type until the function or class is used, but you still want to enforce consistency across operations involving that type.
+Syntax of Generics
+Generics are typically declared with angle brackets <T> where T is a placeholder for a type that will be provided when the generic function, class, or interface is used.
+
+Generic Functions
+function that works with multiple types by using generics:
+
 ```ts
-const sum = <T>(n1: T, n2: T) => {};
+function identity<T>(value: T): T {
+  return value;
+}
 
-sum<string>('hello', '2');
+const numberValue = identity<number>(42); // T is number
+const stringValue = identity<string>('Hello'); // T is string
 
-sum<number>(1, 2);
+//TypeScript can also infer the type automatically if it's obvious
+
+const inferredNumber = identity(100); // TypeScript infers T as number
+const inferredString = identity('world'); // TypeScript infers T as string
 ```
+
+- **Generic Interfaces**
+  You can use generics with interfaces to define complex types:
+
+```ts
+interface Box<T> {
+  content: T;
+}
+
+const numberBox: Box<number> = { content: 123 };
+const stringBox: Box<string> = { content: 'hello' };
+```
+
+- **Generic Class**
+
+```ts
+class GenericNumber<T> {
+  value: T;
+
+  constructor(value: T) {
+    this.value = value;
+  }
+
+  add(x: T, y: T): T {
+    return x; // simple logic for demonstration
+  }
+}
+
+const numberInstance = new GenericNumber<number>(10);
+const stringInstance = new GenericNumber<string>('TypeScript');
+```
+
+- **Generic Class**
+  Sometimes you want to limit the types that can be used in generics. You can use constraints to ensure that a type parameter has certain properties or methods.
+
+```ts
+interface HasLength {
+  length: number;
+}
+
+function logLength<T extends HasLength>(value: T): void {
+  console.log(value.length);
+}
+
+logLength('hello'); // Works because string has a length property
+logLength([1, 2, 3]); // Works because arrays have a length property
+logLength({ length: 10 }); // Works because object has a length property
+```
+
+- **Generic Types and Default Values**
+  You can also specify default types for generics if the type isn't provided
+
+```ts
+function defaultIdentity<T = string>(value: T): T {
+  return value;
+}
+
+const result = defaultIdentity(); // T is inferred as string by default
+```
+
+- **Example: Generic Data Structure**
+
+```ts
+class Stack<T> {
+  private items: T[] = [];
+
+  push(item: T): void {
+    this.items.push(item);
+  }
+
+  pop(): T | undefined {
+    return this.items.pop();
+  }
+
+  peek(): T | undefined {
+    return this.items[this.items.length - 1];
+  }
+}
+
+const numberStack = new Stack<number>();
+numberStack.push(1);
+numberStack.push(2);
+console.log(numberStack.pop()); // Output: 2
+
+const stringStack = new Stack<string>();
+stringStack.push('a');
+stringStack.push('b');
+console.log(stringStack.pop()); // Output: "b"
+```
+
+- **Use Cases for Generics**
+
+- Reusable Functions: Functions that can operate on multiple types while maintaining type safety (e.g., identity function, sorting functions).
+- Data Structures: Custom types like List<T>, Stack<T>, or Queue<T>, which are generic and can store any data type.
+- APIs: You can use generics in APIs to accept or return different types while preserving the structure and constraints across different components.
+- Generics in TypeScript allow for the creation of components that can work with a variety of types.
+- They enable reusability and type safety by allowing developers to write flexible, type-agnostic functions, classes, and interfaces.
+- You can add constraints to generics to restrict them to specific types with certain properties.
+- Generics are especially useful for working with complex data structures or APIs where type flexibility is needed.
 
 ### general object types
 
